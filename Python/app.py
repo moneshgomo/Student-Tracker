@@ -7,10 +7,9 @@ from flask_cors import CORS
 
 
 app = Flask(__name__)
-frontend_url = os.environ.get("FRONTEND_URL", "http://127.0.0.1:5500")
-CORS(app, origins=[frontend_url])
-# Enable CORS
-CORS(app)
+# Production frontend URL - no environment variables needed
+frontend_url = "https://studenttracker-xi.vercel.app"
+CORS(app, origins=[frontend_url, "http://localhost:5173"])  # Allow both production and local development
 
 # enable CORS if the package is available so the frontend (served from Live Server / Vite) can call this API
 if CORS is not None:

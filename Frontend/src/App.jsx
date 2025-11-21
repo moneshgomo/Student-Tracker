@@ -37,7 +37,8 @@ function App() {
     formData.append('file', file);
 
     try {
-      const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+      // Production backend URL - no environment variables needed
+      const baseUrl = 'https://student-tracker-backend-7t0t.onrender.com';
       const response = await axios.post(`${baseUrl}/api/marksheet/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
